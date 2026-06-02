@@ -110,15 +110,20 @@ email via agent flow (Outlook), executed by Power Automate.`
 
 1. **Import the solution:** in the Power Platform maker portal (make.powerapps.com) →
    Solutions → Import solution → select the .zip in `solution/`.
-2. **Recreate the knowledge source:** create a SharePoint document library, upload
+2. **Set environment variables:** during or after import, provide values for the
+   solution's environment variables:
+   - `ResourceAllocatorSharepoint` — the SharePoint site/library URL used as the knowledge
+     source and the event-trigger location
+   - `ResourceManagerEmail` — the email address that receives autonomous match notifications
+3. **Recreate the knowledge source:** create a SharePoint document library, upload
    `Bench_Resources.xlsx` and the resume files, and add the library as a knowledge source
    to the agent.
-3. **Create the trigger list:** create a "Fulfillment Requests" SharePoint list (columns:
+4. **Create the trigger list:** create a "Fulfillment Requests" SharePoint list (columns:
    RequiredRole, RequiredSkills, MinExperience, DomainPreference, Priority, RequestedBy,
    Status) for the event trigger.
-4. **Reconnect connectors:** re-establish the Office 365 Outlook and SharePoint
+5. **Reconnect connectors:** re-establish the Office 365 Outlook and SharePoint
    connections after import.
-5. **Publish** the agent to Microsoft Teams.
+6. **Publish** the agent to Microsoft Teams.
 
 > Note: the exported solution contains the agent and flows. The SharePoint data
 > (tracker + resumes) lives in SharePoint and is provided here under `data/` to recreate
